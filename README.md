@@ -69,6 +69,9 @@ Each module is a separate HTML page:
 ## Home Page
 ![Project Screenshot](images/home.png)
 
+## Indirect Assessment 
+![Project Screenshot](images/indriect.png)
+
 
 
 
