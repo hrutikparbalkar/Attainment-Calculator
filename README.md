@@ -81,5 +81,13 @@ Each module is a separate HTML page:
 ## UT Assessment result
 ![Project Screenshot](images/utResult.png)
 
+## Term Work Assessment
+![Project Screenshot](images/termWork.png)
+
+## University Assessment
+![Project Screenshot](images/university.png)
+
+## University Assessment result
+![Project Screenshot](images/universityResult.png)
 
 
