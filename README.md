@@ -72,6 +72,14 @@ Each module is a separate HTML page:
 ## Indirect Assessment 
 ![Project Screenshot](images/indriect.png)
 
+## Indirect Assessment result
+![Project Screenshot](images/indirectResult.png)
+
+## UT Assessment
+![Project Screenshot](images/ut.png)
+
+## UT Assessment result
+![Project Screenshot](images/utResult.png)
 
 
 
