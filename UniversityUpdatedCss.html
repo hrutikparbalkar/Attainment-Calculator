@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read Excel File</title>
+<style>
+  body {
+     background:linear-gradient(to bottom, #ADD8E6 0%, #ff99cc 100%);
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  input[type="number"],
+  input[type="text"],
+  input[type="file"],
+  button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+
+  input[type="file"] {
+    border: none;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  td {
+    border: 1px solid #ddd;
+  }
+
+  th:first-child,
+  td:first-child {
+    text-align: left;
+  }
+
+  /* Add more styles as needed */
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <label for="sheetIndex">Sheet Index:</label>
+    <input type="number" id="sheetIndex" value="12" min="0">
+
+    <label for="startColumn">Start Column:</label>
+    <input type="text" id="startColumn" value="H">
+
+    <label for="endColumn">End Column:</label>
+    <input type="text" id="endColumn" value="M">
+
+    <label for="startRow">Start Row:</label>
+    <input type="number" id="startRow" value="7" min="1">
+
+    <label for="endRow">End Row:</label>
+    <input type="number" id="endRow" value="144" min="1">
+
+    <label for="roundValue">Rounding Value:</label>
+    <input type="number" id="roundValue" value="0.8" step="0.01">
+
+    <input type="file" id="fileInput" accept=".xlsx, .xls">
+    <button style="cursor: pointer;" onclick="handleFile()">Read Excel File</button>
+
+
+
+
+    <table id="dataTable">
+      <tr>
+        <th>UNI PAPER</th>
+        <th>CO1</th>
+        <th>CO2</th>
+        <th>CO3</th>
+        <th>CO4</th>
+        <th>CO5</th>
+        <th>CO6</th>
+      </tr>
+      <tr>
+        <td>out of 100</td>
+        <td id="outOf100Col1"></td>
+        <td id="outOf100Col2"></td>
+        <td id="outOf100Col3"></td>
+        <td id="outOf100Col4"></td>
+        <td id="outOf100Col5"></td>
+        <td id="outOf100Col6"></td>
+      </tr>
+      <tr>
+        <td>out of 80</td>
+        <td id="outOf80Col1"></td>
+        <td id="outOf80Col2"></td>
+        <td id="outOf80Col3"></td>
+        <td id="outOf80Col4"></td>
+        <td id="outOf80Col5"></td>
+        <td id="outOf80Col6"></td>
+      </tr>
+      <tr>
+        <td><b>Final round</b></td>
+        <td id="finalRoundCol1"></td>
+        <td id="finalRoundCol2"></td>
+        <td id="finalRoundCol3"></td>
+        <td id="finalRoundCol4"></td>
+        <td id="finalRoundCol5"></td>
+        <td id="finalRoundCol6"></td>
+      </tr>
+    </table>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+  <script>
+    function handleFile() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+      const sheetIndex = parseInt(document.getElementById('sheetIndex').value);
+      const startColumn = document.getElementById('startColumn').value.toUpperCase();
+      const endColumn = document.getElementById('endColumn').value.toUpperCase();
+      const startRow = parseInt(document.getElementById('startRow').value);
+      const endRow = parseInt(document.getElementById('endRow').value);
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+
+          // Get the worksheet by index
+          const worksheet = workbook.Sheets[workbook.SheetNames[sheetIndex]];
+
+          // Initialize sums for each column
+          const columnSums = {};
+
+          // Loop through the specified range of rows and columns and calculate the sum for each column
+          for (let j = startColumn.charCodeAt(0); j <= endColumn.charCodeAt(0); j++) {
+            const columnLetter = String.fromCharCode(j);
+            let sum = 0;
+            for (let i = startRow; i <= endRow; i++) {
+              const cellAddress = columnLetter + i;
+              const cellData = worksheet[cellAddress] ? parseFloat(worksheet[cellAddress].v) : 0;
+              sum += isNaN(cellData) ? 0 : cellData;
+            }
+            columnSums[columnLetter] = sum;
+          }
+
+          // Display the sum in the respective cells of "out of 100" row
+          document.getElementById('outOf100Col1').textContent = columnSums['H'];
+          document.getElementById('outOf100Col2').textContent = columnSums['I'];
+          document.getElementById('outOf100Col3').textContent = columnSums['J'];
+          document.getElementById('outOf100Col4').textContent = columnSums['K'];
+          document.getElementById('outOf100Col5').textContent = columnSums['L'];
+          document.getElementById('outOf100Col6').textContent = columnSums['M'];
+
+          // Calculate 80% of each column sum and display it in the respective cells of "out of 80" row
+          document.getElementById('outOf80Col1').textContent = (0.8 * columnSums['H']).toFixed(2);
+          document.getElementById('outOf80Col2').textContent = (0.8 * columnSums['I']).toFixed(2);
+          document.getElementById('outOf80Col3').textContent = (0.8 * columnSums['J']).toFixed(2);
+          document.getElementById('outOf80Col4').textContent = (0.8 * columnSums['K']).toFixed(2);
+          document.getElementById('outOf80Col5').textContent = (0.8 * columnSums['L']).toFixed(2);
+          document.getElementById('outOf80Col6').textContent = (0.8 * columnSums['M']).toFixed(2);
+
+// Get the rounding value from the input field
+const roundValue = parseFloat(document.getElementById('roundValue').value);
+
+// Calculate the rounded values for each column and display them in the final round row
+document.getElementById('finalRoundCol1').textContent = Math.round(roundValue * columnSums['H']);
+document.getElementById('finalRoundCol2').textContent = Math.round(roundValue * columnSums['I']);
+document.getElementById('finalRoundCol3').textContent = Math.round(roundValue * columnSums['J']);
+document.getElementById('finalRoundCol4').textContent = Math.round(roundValue * columnSums['K']);
+document.getElementById('finalRoundCol5').textContent = Math.round(roundValue * columnSums['L']);
+document.getElementById('finalRoundCol6').textContent = Math.round(roundValue * columnSums['M']);
+
+        };
+
+        reader.onerror = function(err) {
+          console.error('File reading error:', err);
+        };
+
+        reader.readAsArrayBuffer(file);
+      } else {
+        console.error('No file selected.');
+      }
+    }
+  </script>
+</body>
+</html>
+
