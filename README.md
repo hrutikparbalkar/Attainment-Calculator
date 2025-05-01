@@ -88,6 +88,6 @@ Each module is a separate HTML page:
 ![Project Screenshot](images/university.png)
 
 ## University Assessment result
-![Project Screenshot](images/universityResult.png)
+![Project Screenshot](images/universityresult.png)
 
 
