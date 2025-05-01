@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,3 +85,91 @@
 </body>
 </html>
 
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bar Graph Page</title>
+    <!-- Include the Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>COURSE EXIT SURVEY STATISTICS</h1>
+
+    <!-- Adjust the width and height attributes to make the graph one third of the page -->
+    <canvas id="barChart" width="200" height="100"></canvas>
+
+    <script>
+        // Function to update the bar graph with values from query parameters
+        function updateBarGraph() {
+            // Retrieve query parameters from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const co1Value = parseFloat(urlParams.get('co1'));
+            const co2Value = parseFloat(urlParams.get('co2'));
+            const co3Value = parseFloat(urlParams.get('co3'));
+            const co4Value = parseFloat(urlParams.get('co4'));
+            const co5Value = parseFloat(urlParams.get('co5'));
+            const co6Value = parseFloat(urlParams.get('co6'));
+
+            // Update the data array
+            const data = {
+                labels: ["CO1", "CO2", "CO3", "CO4", "CO5", "CO6"], // Use the previous x-axis labels
+                datasets: [{
+                    label: "Out of 20",
+                    data: [co1Value, co2Value, co3Value, co4Value, co5Value, co6Value],
+                    backgroundColor: [
+                        'rgba(153, 51, 51, 0.7)',   // Dark and vibrant red
+                        'rgba(51, 102, 153, 0.7)',  // Dark and vibrant blue
+                        'rgba(153, 153, 51, 0.7)',  // Dark and vibrant yellow
+                        'rgba(51, 102, 51, 0.7)',   // Dark and vibrant green
+                        'rgba(102, 51, 153, 0.7)',  // Dark and vibrant purple
+                        'rgba(153, 102, 51, 0.7)'   // Dark and vibrant orange
+                    ],
+                    borderColor: [
+                        'rgba(153, 51, 51, 1)',   // Dark and vibrant red
+                        'rgba(51, 102, 153, 1)',  // Dark and vibrant blue
+                        'rgba(153, 153, 51, 1)',  // Dark and vibrant yellow
+                        'rgba(51, 102, 51, 1)',   // Dark and vibrant green
+                        'rgba(102, 51, 153, 1)',  // Dark and vibrant purple
+                        'rgba(153, 102, 51, 1)'   // Dark and vibrant orange
+                    ],
+                    borderWidth: 1
+                }]
+            };
+
+            // Create a bar chart
+            const ctx = document.getElementById('barChart').getContext('2d');
+            const barChart = new Chart(ctx, {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        x: { // Customize the x-axis
+                            beginAtZero: true
+                        },
+                        y: { // Customize the y-axis
+                            beginAtZero: false,
+                            suggestedMin: 0,
+                            suggestedMax: 20,
+                            callback: function(value, index, values) {
+                                return value.toFixed(2); // Format the y-axis labels to two decimal places
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Wrap the code in a DOMContentLoaded event listener to ensure it runs after the document is fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Call the function to update the bar graph
+            updateBarGraph();
+        });
+    </script>
+
+</body>
+</html>
+
+>>>>>>> 79e9e21d517b79109295c7c3e5cb004d04bce524

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -410,3 +411,417 @@
   </script>
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Read Excel File</title>
+<style>
+  /* Your existing styles */
+  #tableContainer {
+      overflow-x: auto;
+      max-width: 100%;
+      width: 50%;
+      margin: 100px auto;
+      border-collapse: collapse;
+  }
+
+  /* Add the new styles here */
+  body, h1, p, ul, li {
+      margin: 0;
+      padding: 0;
+  }
+
+  body {
+      background-color: #f8f8f8;
+      font-family: Arial, sans-serif;
+  }
+
+  header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+  }
+
+  header h1 {
+      font-size: 36px;
+  }
+
+  nav {
+      background-color: #007BFF;
+      padding: 10px;
+      text-align: center;
+  }
+
+  nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+  }
+
+  nav li {
+      display: inline-block;
+      margin-right: 10px;
+  }
+
+  nav a {
+      text-decoration: none;
+      color: #fff;
+      padding: 8px 15px;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+  }
+
+  nav a:hover {
+      background-color: #0056b3;
+  }
+
+  .container {
+      max-width: 960px;
+      margin: 20px auto;
+      padding: 30px;
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      color: black;
+      font-weight: bold;
+  }
+
+  .box {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-weight: bold;
+  }
+
+  .small-box {
+      background-color: #007BFF;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: inline-block;
+      margin-right: 10px;
+      font-weight: bold;
+  }
+
+  footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+  }
+
+  .box a {
+      color: #fff; /* Set link color to white */
+      text-decoration: none; /* Remove underlines from links */
+  }
+
+  footer p {
+      margin: 0;
+      font-size: 14px;
+  }
+
+  .home-content {
+      text-align: center;
+  }
+</style>
+<style>
+        #tableContainer {
+            overflow-x: auto;
+            max-width: 100%;
+            width: 50%;
+            margin: 100px auto;
+            border-collapse: collapse;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 5px; /* Adjust padding as needed */
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            width: 50px; /* Adjust the width as needed */
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+
+        #sumTable {
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        #sumTable th, #sumTable td {
+            padding: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #sumTable th {
+            background-color: #f2f2f2;
+        }
+
+        #countTable {
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        #countTable th, #countTable td {
+            padding: 5px;
+            border: 1px solid #ddd;
+        }
+
+        #countTable th {
+            background-color: #f2f2f2;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"],
+        input[type="text"] {
+            width: 80px;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+</style>
+</head>
+<body>
+  <input type="file" id="fileInput" accept=".xlsx, .xls">
+  <label for="ass1SheetIndex">Ass1 Sheet Index:</label>
+  <input type="number" id="ass1SheetIndex" value="8">
+  <label for="ass1StartColumn">Start Column:</label>
+  <input type="text" id="ass1StartColumn" value="C">
+  <label for="ass1EndColumn">End Column:</label>
+  <input type="text" id="ass1EndColumn" value="H">
+  <label for="ass1StartRow">Start Row:</label>
+  <input type="number" id="ass1StartRow" value="8">
+  <label for="ass1EndRow">End Row:</label>
+  <input type="number" id="ass1EndRow" value="50">
+
+  <label for="ass2SheetIndex">Ass2 Sheet Index:</label>
+  <input type="number" id="ass2SheetIndex" value="9">
+  <label for="ass2StartColumn">Start Column:</label>
+  <input type="text" id="ass2StartColumn" value="C">
+  <label for="ass2EndColumn">End Column:</label>
+  <input type="text" id="ass2EndColumn" value="H">
+  <label for="ass2StartRow">Start Row:</label>
+  <input type="number" id="ass2StartRow" value="8">
+  <label for="ass2EndRow">End Row:</label>
+  <input type="number" id="ass2EndRow" value="60">
+
+  <label for="expSheetIndex">Exp Sheet Index:</label>
+  <input type="number" id="expSheetIndex" value="11">
+  <label for="expStartColumn">Start Column:</label>
+  <input type="text" id="expStartColumn" value="C">
+  <label for="expEndColumn">End Column:</label>
+  <input type="text" id="expEndColumn" value="H">
+  <label for="expStartRow">Start Row:</label>
+  <input type="number" id="expStartRow" value="8">
+  <label for="expEndRow">End Row:</label>
+  <input type="number" id="expEndRow" value="17">
+
+  <button onclick="handleFile()">Read Excel File</button>
+  <h1>Direct Table of Term Work</h1>
+  <table id="contentTable" border="1">
+      <thead>
+          <tr>
+              <th>Distribution of marks for CO</th>
+              <th>Ass 1</th>
+              <th>Ass 2</th>
+              <th>Exp</th>
+              <th>Total</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>CO1</td>
+              <td><span id="totalSumC1">0</span></td>
+              <td><span id="totalSumC2">0</span></td>
+              <td><span id="totalSumCExp">0</span></td>
+              <td><span id="totalSumCTotal">0</span></td>
+          </tr>
+          <tr>
+              <td>CO2</td>
+              <td><span id="totalSumD1">0</span></td>
+              <td><span id="totalSumD2">0</span></td>
+              <td><span id="totalSumDExp">0</span></td>
+              <td><span id="totalSumDTotal">0</span></td>
+          </tr>
+          <tr>
+              <td>CO3</td>
+              <td><span id="totalSumE1">0</span></td>
+              <td><span id="totalSumE2">0</span></td>
+              <td><span id="totalSumEExp">0</span></td>
+              <td><span id="totalSumETotal">0</span></td>
+          </tr>
+          <tr>
+              <td>CO4</td>
+              <td><span id="totalSumF1">0</span></td>
+              <td><span id="totalSumF2">0</span></td>
+              <td><span id="totalSumFExp">0</span></td>
+              <td><span id="totalSumFTotal">0</span></td>
+          </tr>
+          <tr>
+              <td>CO5</td>
+              <td><span id="totalSumG1">0</span></td>
+              <td><span id="totalSumG2">0</span></td>
+              <td><span id="totalSumGExp">0</span></td>
+              <td><span id="totalSumGTotal">0</span></td>
+          </tr>
+          <tr>
+              <td>CO6</td>
+              <td><span id="totalSumH1">0</span></td>
+              <td><span id="totalSumH2">0</span></td>
+              <td><span id="totalSumHExp">0</span></td>
+              <td><span id="totalSumHTotal">0</span></td>
+          </tr>
+      </tbody>
+  </table>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+  <script>
+    function handleFile() {
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+
+          // Initialize total sums for each column
+          const totalSumsAss1 = {};
+          const totalSumsAss2 = {};
+          const totalSumsExp = {};
+
+          // Process Ass1 sheet
+          const sheetIndexAss1 = parseInt(document.getElementById('ass1SheetIndex').value);
+          const startColumnAss1 = document.getElementById('ass1StartColumn').value.toUpperCase();
+          const endColumnAss1 = document.getElementById('ass1EndColumn').value.toUpperCase();
+          const startRowAss1 = parseInt(document.getElementById('ass1StartRow').value);
+          const endRowAss1 = parseInt(document.getElementById('ass1EndRow').value);
+          const worksheetAss1 = workbook.Sheets[workbook.SheetNames[sheetIndexAss1]];
+          for (let col = startColumnAss1.charCodeAt(0); col <= endColumnAss1.charCodeAt(0); col++) {
+            const column = String.fromCharCode(col);
+            let sum = 0;
+            for (let row = startRowAss1; row <= endRowAss1; row++) {
+              const cellAddress = column + row;
+              const cellValue = worksheetAss1[cellAddress] ? worksheetAss1[cellAddress].v : 0;
+              sum += cellValue;
+            }
+            totalSumsAss1[column] = ((sum * 5) / 120).toFixed(2);
+          }
+
+          // Process Ass2 sheet
+          const sheetIndexAss2 = parseInt(document.getElementById('ass2SheetIndex').value);
+          const startColumnAss2 = document.getElementById('ass2StartColumn').value.toUpperCase();
+          const endColumnAss2 = document.getElementById('ass2EndColumn').value.toUpperCase();
+          const startRowAss2 = parseInt(document.getElementById('ass2StartRow').value);
+          const endRowAss2 = parseInt(document.getElementById('ass2EndRow').value);
+          const worksheetAss2 = workbook.Sheets[workbook.SheetNames[sheetIndexAss2]];
+          for (let col = startColumnAss2.charCodeAt(0); col <= endColumnAss2.charCodeAt(0); col++) {
+            const column = String.fromCharCode(col);
+            let sum = 0;
+            for (let row = startRowAss2; row <= endRowAss2; row++) {
+              const cellAddress = column + row;
+              const cellValue = worksheetAss2[cellAddress] ? worksheetAss2[cellAddress].v : 0;
+              sum += cellValue;
+            }
+            totalSumsAss2[column] = ((sum * 5) / 120).toFixed(2);
+          }
+
+          // Process Exp sheet
+          const sheetIndexExp = parseInt(document.getElementById('expSheetIndex').value);
+          const startColumnExp = document.getElementById('expStartColumn').value.toUpperCase();
+          const endColumnExp = document.getElementById('expEndColumn').value.toUpperCase();
+          const startRowExp = parseInt(document.getElementById('expStartRow').value);
+          const endRowExp = parseInt(document.getElementById('expEndRow').value);
+          const worksheetExp = workbook.Sheets[workbook.SheetNames[sheetIndexExp]];
+          for (let col = startColumnExp.charCodeAt(0); col <= endColumnExp.charCodeAt(0); col++) {
+            const column = String.fromCharCode(col);
+            let sum = 0;
+            for (let row = startRowExp; row <= endRowExp; row++) {
+              const cellAddress = column + row;
+              const cellValue = worksheetExp[cellAddress] ? worksheetExp[cellAddress].v : 0;
+              sum += cellValue;
+            }
+            totalSumsExp[column] = ((sum * 15) / 100).toFixed(2);
+          }
+
+          // Update the table with the calculated values for Ass1
+          for (const column in totalSumsAss1) {
+            document.getElementById(`totalSum${column}1`).textContent = totalSumsAss1[column];
+          }
+
+          // Update the table with the calculated values for Ass2
+          for (const column in totalSumsAss2) {
+            document.getElementById(`totalSum${column}2`).textContent = totalSumsAss2[column];
+          }
+
+          // Update the table with the calculated values for Exp
+          for (const column in totalSumsExp) {
+            document.getElementById(`totalSum${column}Exp`).textContent = totalSumsExp[column];
+          }
+
+          // Calculate and display total for each row
+          const rows = document.querySelectorAll('#contentTable tbody tr');
+          rows.forEach(row => {
+            const ass1 = parseFloat(row.querySelector('td:nth-child(2) span').textContent);
+            const ass2 = parseFloat(row.querySelector('td:nth-child(3) span').textContent);
+            const exp = parseFloat(row.querySelector('td:nth-child(4) span').textContent);
+            const total = (ass1 + ass2 + exp).toFixed(2);
+            row.querySelector('td:nth-child(5) span').textContent = total;
+          });
+        };
+
+        reader.onerror = function(err) {
+          console.error('File reading error:', err);
+        };
+
+        reader.readAsArrayBuffer(file);
+      } else {
+        console.error('No file selected.');
+      }
+    }
+  </script>
+</body>
+</html>
+>>>>>>> 79e9e21d517b79109295c7c3e5cb004d04bce524

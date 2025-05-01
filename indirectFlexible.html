@@ -1,3 +1,4 @@
+<<<<<<< HEAD
   <!DOCTYPE html>
 <html lang="en">
 
@@ -358,3 +359,365 @@
 </body>
 
 </html>
+=======
+  <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="table.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.4/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/5.2.3/css/bootstrap.min.css">
+    <style>
+          .my-special-table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 100px auto;
+        }
+
+        .my-special-table th,
+        .my-special-table td {
+            padding: 5px;
+            text-align: center;
+        }
+
+        .my-special-table th {
+            background-color: #fff;
+        }
+
+        .my-special-table td {
+            width: 50px;
+            white-space: nowrap;
+            background-color: #fff; /* Change background color of CO rows to white */
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="file"] {
+            border: none;
+            background-color: #3A98B9; /* Change background color of input[type="file"] */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table-bordered {
+            border: 1px solid #ddd;
+        }
+
+        body {
+            background:linear-gradient(to bottom, #ADD8E6 0%, #ff99cc 100%)	; /* Change background color of the body */
+        }
+
+        /* New styles */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .action-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #3A98B9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-button:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            text-align: center; /* Center-align the INDIRECT ASSESSMENT REPORT */
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <h1>INDIRECT ASSESSMENT REPORT</h1>
+    <table border="n" class="my-special-table" style="border-collapse: collapse;">
+        <tr>
+            <th colspan="10">COURSE EXIT SURVEY STATISTICS</th>
+        </tr>
+        <tr>
+            <th>Total no. of student present for exist survey:</th>
+            <th colspan="10">102</th>
+
+        </tr>
+        <tr>
+            <th rowspan="2">Course objectives</th>
+            <th colspan="5">Acceptance level</th>
+            <th rowspan="2">%</th>
+            <th rowspan="2">Out of 20</th>
+        </tr>
+        <tr>
+            <th>5</th>
+            <th>4</th>
+            <th>3</th>
+            <th>2</th>
+            <th>1</th>
+
+        </tr>
+
+        <tr>
+            <td>CO1</td>
+            <td id="co1_rate5value"></td>
+            <td id="co1_rate4value"></td>
+            <td id="co1_rate3value"></td>
+            <td id="co1_rate2value"></td>
+            <td id="co1_rate1value"></td>
+            <td id="co1_percentage_value"></td>
+            <td id="co1_value_out_of_20"></td> 
+        </tr>
+        <tr>
+            <td>CO2</td> 
+            <td id="co2_rate5value"></td>
+            <td id="co2_rate4value"></td>
+            <td id="co2_rate3value"></td>
+            <td id="co2_rate2value"></td>
+            <td id="co2_rate1value"></td>
+            <td id="co2_percentage_value"></td>
+            <td id="co2_value_out_of_20"></td> 
+        </tr>
+        <tr>
+            <td>CO3</td>
+            <td id="co3_rate5value"></td>
+            <td id="co3_rate4value"></td>
+            <td id="co3_rate3value"></td>
+            <td id="co3_rate2value"></td>
+            <td id="co3_rate1value"></td>
+            <td id="co3_percentage_value"></td>
+            <td id="co3_value_out_of_20"></td> 
+        </tr>
+        <tr>
+            <td>CO4</td>
+            <td id="co4_rate5value"></td>
+            <td id="co4_rate4value"></td>
+            <td id="co4_rate3value"></td>
+            <td id="co4_rate2value"></td>
+            <td id="co4_rate1value"></td>
+            <td id="co4_percentage_value"></td>
+            <td id="co4_value_out_of_20"></td> 
+        </tr>
+        <tr>
+            <td>CO5</td>
+            <td id="co5_rate5value"></td>
+            <td id="co5_rate4value"></td>
+            <td id="co5_rate3value"></td>
+            <td id="co5_rate2value"></td>
+            <td id="co5_rate1value"></td>
+            <td id="co5_percentage_value"></td>
+            <td id="co5_value_out_of_20"></td> 
+        </tr>
+        <tr>
+            <td>CO6</td>
+            <td id="co6_rate5value"></td>
+            <td id="co6_rate4value"></td>
+            <td id="co6_rate3value"></td>
+            <td id="co6_rate2value"></td>
+            <td id="co6_rate1value"></td>
+            <td id="co6_percentage_value"></td>
+            <td id="co6_value_out_of_20"></td> 
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <th>Avg :</th>
+            <td id="average_value"></td>
+
+        </tr>
+
+    </table>
+    <div class="container">
+
+        <label for="sheetNumber">Sheet Number:</label>
+        <input type="number" id="sheetNumber" value="0" min="0" required>
+        
+        <label for="columnsToExtract">Columns to Extract (comma-separated):</label>
+        <input type="text" id="columnsToExtract" value="8,9,10,11,12,13" required>
+        
+        <label for="startRow">Start Row:</label>
+        <input type="number" id="startRow" value="3" min="1" required>
+        
+        <label for="endRow">End Row:</label>
+        <input type="number" id="endRow" value="104" min="1" required>
+
+        <label for="totalStudents">Total Number of Students:</label>
+        <input type="number" id="totalStudents" min="1" required>
+
+        <input type="file" name="" id="file-input" accept=".xlsx" required>
+        <table class="table table-bordered" id="excel-table"></table>
+
+    
+    </div>
+    <button onclick="viewBarGraph()">View Bar Graph</button>
+    <button onclick="calculateValues()">Calculate Values</button>
+
+    <script>
+        function calculateValues() {
+            const sheetNumber = parseInt(document.getElementById('sheetNumber').value, 10);
+            const columnsToExtract = document.getElementById('columnsToExtract').value.split(',').map(Number);
+            const startRow = parseInt(document.getElementById('startRow').value, 10);
+            const endRow = parseInt(document.getElementById('endRow').value, 10);
+            const totalStudents = parseInt(document.getElementById('totalStudents').value, 10);
+            const rating5 = 5;
+            const rating4 = 4;
+            const rating3 = 3;
+            const rating2 = 2;
+            const rating1 = 1;
+
+            const fileInput = document.getElementById("file-input");
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    const data = new Uint8Array(e.target.result);
+                    const workbook = XLSX.read(data, { type: 'array' });
+
+                    const sheet = workbook.Sheets[workbook.SheetNames[sheetNumber]];
+
+                    for (let i = 0; i < columnsToExtract.length; i++) {
+                        const column = columnsToExtract[i];
+
+                        const extractedDataCO = [];
+
+                        for (let j = startRow; j <= endRow; j++) {
+                            const cellAddress = XLSX.utils.encode_cell({ r: j - 1, c: column });
+                            const cellValue = sheet[cellAddress] ? sheet[cellAddress].v : null;
+
+                            extractedDataCO.push(cellValue);
+                        }
+
+                        const count5CO = extractedDataCO.filter((number) => number === rating5).length;
+                        const count4CO = extractedDataCO.filter((number) => number === rating4).length;
+                        const count3CO = extractedDataCO.filter((number) => number === rating3).length;
+                        const count2CO = extractedDataCO.filter((number) => number === rating2).length;
+                        const count1CO = extractedDataCO.filter((number) => number === rating1).length;
+                       
+
+                        document.getElementById(`co${i + 1}_rate5value`).innerHTML = count5CO;
+                        document.getElementById(`co${i + 1}_rate4value`).innerHTML = count4CO;
+                        document.getElementById(`co${i + 1}_rate3value`).innerHTML = count3CO;
+                        document.getElementById(`co${i + 1}_rate2value`).innerHTML = count2CO;
+                        document.getElementById(`co${i + 1}_rate1value`).innerHTML = count1CO;
+
+                        console.log(`The number ${rating5} appears ${count5CO} times for CO${i + 1}.`);
+                        console.log(`The number ${rating4} appears ${count4CO} times for CO${i + 1}.`);
+                        console.log(`The number ${rating3} appears ${count3CO} times for CO${i + 1}.`);
+                        console.log(`The number ${rating2} appears ${count2CO} times for CO${i + 1}.`);
+                        console.log(`The number ${rating1} appears ${count1CO} times for CO${i + 1}.`);
+
+                        const coRate5 = count5CO;
+                        const coRate4 = count4CO;
+                        const coRate3 = count3CO;
+                        const coRate2 = count2CO;
+                        const coRate1 = count1CO;
+
+                        const coPercentage = ((coRate5 * rating5 + coRate4 * rating4 + coRate3 * rating3 + coRate2 * rating2 + coRate1 * rating1) / (totalStudents * rating5)) * 100;
+                        const maxScoreCO = 20;
+                        const coValueOutOf20 = (coPercentage / 100) * maxScoreCO;
+
+                        document.getElementById(`co${i + 1}_percentage_value`).innerHTML = coPercentage.toFixed(2);
+                        document.getElementById(`co${i + 1}_value_out_of_20`).innerHTML = coValueOutOf20.toFixed(2);
+                    }
+
+                    const coValuesOutOf20 = columnsToExtract.map((column) => {
+                        const extractedDataCO = [];
+
+                        for (let j = startRow; j <= endRow; j++) {
+                            const cellAddress = XLSX.utils.encode_cell({ r: j - 1, c: column });
+                            const cellValue = sheet[cellAddress] ? sheet[cellAddress].v : null;
+
+                            extractedDataCO.push(cellValue);
+                        }
+
+                        const count5CO = extractedDataCO.filter((number) => number === rating5).length;
+                        const count4CO = extractedDataCO.filter((number) => number === rating4).length;
+                        const count3CO = extractedDataCO.filter((number) => number === rating3).length;
+                        const count2CO = extractedDataCO.filter((number) => number === rating2).length;
+                        const count1CO = extractedDataCO.filter((number) => number === rating1).length;
+
+                        const coRate5 = count5CO;
+                        const coRate4 = count4CO;
+                        const coRate3 = count3CO;
+                        const coRate2 = count2CO;
+                        const coRate1 = count1CO;
+
+                        const coPercentage = ((coRate5 * rating5 + coRate4 * rating4 + coRate3 * rating3 + coRate2 * rating2 + coRate1 * rating1) / (totalStudents * rating5)) * 100;
+                        const maxScoreCO = 20;
+                        const coValueOutOf20 = (coPercentage / 100) * maxScoreCO;
+
+                        return coValueOutOf20;
+                    });
+
+                    const average = coValuesOutOf20.reduce((sum, value) => sum + value, 0) / columnsToExtract.length;
+                    document.getElementById("average_value").textContent = average.toFixed(2);
+                };
+
+                reader.readAsArrayBuffer(file);
+            } else {
+                console.error("No file selected");
+            }
+        }
+
+        function viewBarGraph() {
+            const sheetNumber = parseInt(document.getElementById('sheetNumber').value, 10);
+            const columnsToExtract = document.getElementById('columnsToExtract').value.split(',').map(Number);
+            const startRow = parseInt(document.getElementById('startRow').value, 10);
+            const endRow = parseInt(document.getElementById('endRow').value, 10);
+
+            const co1Value = parseFloat(document.getElementById('co1_value_out_of_20').textContent);
+            const co2Value = parseFloat(document.getElementById('co2_value_out_of_20').textContent);
+            const co3Value = parseFloat(document.getElementById('co3_value_out_of_20').textContent);
+            const co4Value = parseFloat(document.getElementById('co4_value_out_of_20').textContent);
+            const co5Value = parseFloat(document.getElementById('co5_value_out_of_20').textContent);
+            const co6Value = parseFloat(document.getElementById('co6_value_out_of_20').textContent);
+
+            window.location.href = `bargraph.html?co1=${co1Value}&co2=${co2Value}&co3=${co3Value}&co4=${co4Value}&co5=${co5Value}&co6=${co6Value}`;
+        }
+    </script>
+</body>
+
+</html>
+>>>>>>> 79e9e21d517b79109295c7c3e5cb004d04bce524
