@@ -66,6 +66,7 @@ Each module is a separate HTML page:
 - `indirectFlexible.html` – Indirect CO feedback module
 
 ## Screenshots
+Home Page
 ![Project Screenshot](images/home.png)
 
 
