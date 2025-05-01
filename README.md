@@ -11,6 +11,22 @@ A web-based tool to help educational institutions evaluate and calculate **Cours
 The **Attainment Calculator** assists faculty in computing attainment levels using data from Unit Tests, Term Work, University Exams, and Indirect feedback. It simplifies the overall process, ensuring accuracy and saving time.
 
 ---
+# Problem Statement
+
+In educational institutions, accurately assessing and tracking student performance across various components (such as Unit Tests, Term Work, University Exams, and Indirect Feedback) is essential for determining **Course Outcome (CO) attainment**. However, manually calculating these values can be cumbersome and error-prone, especially when dealing with large amounts of student data.
+
+Current systems may not offer a straightforward way for faculty to compute CO attainment quickly and efficiently. Moreover, a lack of a unified platform often leads to inconsistencies in assessment and difficulty in tracking student progress over time.
+
+---
+
+## Objective:
+
+The objective of the **Attainment Calculator** is to create a web-based application that helps faculty members easily compute CO attainment based on the student's performance in various academic components. The tool aims to:
+
+1. **Automate** the calculation of COs for Unit Tests, Term Work, University Exams, and Indirect Feedback.
+2. Provide a **centralized system** for assessing student attainment, reducing human error.
+3. **Display results clearly** with easy navigation, ensuring a user-friendly interface for faculty members.
+
 
 ## ⚙️ Working Process
 
