@@ -64,17 +64,6 @@ Each module is a separate HTML page:
 - `termwork.html` – Term Work input and processing
 - `UniversityUpdatedCss.html` – University result analysis
 - `indirectFlexible.html` – Indirect CO feedback module
-- `style.css` – Optional styling enhancements
 
----
 
-## 👨‍💻 Future Enhancements
 
-- Add database support to store marks permanently
-- Include admin & faculty login system
-- Automate CO mapping using dynamic forms
-- Visualize attainment levels using charts and graphs
-
----
-
-## © Attainment Calculator – Developed with ❤️ by Team
