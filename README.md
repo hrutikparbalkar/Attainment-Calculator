@@ -54,8 +54,6 @@ Each module is a separate HTML page:
 ## 🛠️ Technologies Used
 
 - **Frontend**: HTML, CSS, JavaScript
-- **Design Tools**: Vanilla CSS (optionally Tailwind CSS)
-- **Hosting**: Can be deployed using GitHub Pages or any static server
 
 ---
 
