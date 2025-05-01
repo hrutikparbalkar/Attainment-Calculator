@@ -65,5 +65,9 @@ Each module is a separate HTML page:
 - `UniversityUpdatedCss.html` – University result analysis
 - `indirectFlexible.html` – Indirect CO feedback module
 
+## Screenshots
+![Project Screenshot](images/home.png)
+
+
 
 
